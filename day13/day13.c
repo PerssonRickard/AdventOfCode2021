@@ -19,10 +19,9 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	int i = 0;
 	int x = 0;
@@ -137,10 +136,9 @@ void printPaper()
 
 void problem2()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	int i = 0;
 	int x = 0;

@@ -94,6 +94,6 @@ while mapWasChanged:
     #print()
     print(nSteps, nMovements)
 
-
+print("Answer problem 1:", nSteps)
 
 file.close()

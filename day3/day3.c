@@ -6,6 +6,7 @@
 
 void problem1();
 void problem2();
+int filterNumbers(char input[1000][nBits], int keepMostCommon);
 
 int main()
 {
@@ -15,14 +16,13 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char stringInput[255];
 	signed int bitVote[nBits] = { 0 };
 
 	int bit = 0;
 	int i;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	while (fscanf(filePointer, "%s", stringInput) == 1)
 	{
@@ -70,14 +70,12 @@ void problem1()
 
 void problem2()
 {
-	FILE *filePointer;
 	char stringInput[255];
 	char input[1000][nBits];
 
-	int bit = 0;
 	int i = 0;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	while (fscanf(filePointer, "%s", stringInput) == 1) // load the data once
 	{

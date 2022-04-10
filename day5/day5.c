@@ -19,11 +19,10 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	//char buffer[255];
 	int x1, y1, x2, y2 = -1;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	while (fscanf(filePointer, "%d,%d -> %d,%d", &x1, &y1, &x2, &y2) == 4)
 	{
@@ -86,12 +85,11 @@ void problem1()
 
 void problem2()
 {
-	FILE *filePointer;
 	//char buffer[255];
 	int x1, y1, x2, y2 = -1;
 	int deltaX, deltaY;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	while (fscanf(filePointer, "%d,%d -> %d,%d", &x1, &y1, &x2, &y2) == 4)
 	{
@@ -154,12 +152,11 @@ void problem2()
 
 void printLargestCoordinates()
 {
-	FILE *filePointer;
 	int x1, y1, x2, y2 = -1;
 	int largestCoordinateX = -1;
 	int largestCoordinateY = -1;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	while (fscanf(filePointer, "%d,%d -> %d,%d", &x1, &y1, &x2, &y2) == 4)
 	{

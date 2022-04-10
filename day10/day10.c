@@ -12,11 +12,10 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char buffer[255];
 	char expectedClosingCharacter[255] = { 0 };
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	int syntaxErrorScore = 0;
 	while (fscanf(filePointer, "%s", buffer) == 1)
@@ -86,15 +85,13 @@ void problem1()
 
 void problem2()
 {
-	FILE *filePointer;
 	char buffer[255];
 	char expectedClosingCharacter[255] = { 0 };
 	unsigned long long completionStringScores[255] = { 0 };
 	int nCompletionStrings = 0;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
-	int syntaxErrorScore = 0;
 	while (fscanf(filePointer, "%s", buffer) == 1)
 	{
 		int i = 0;

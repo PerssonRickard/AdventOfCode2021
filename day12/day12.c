@@ -34,6 +34,7 @@ void printAllPaths();
 bool checkIfHasBeenVisitedBeforeInPathOrFirstTwice(int edgeId, int currentPaths[MAX_N_PATHS][MAX_N_NODES_IN_PATH], int pathIndex);
 
 bool checkIfNewNode(char name[255]);
+bool checkIfPathBeenToSmallNodeTwice(int currentPaths[MAX_N_PATHS][MAX_N_NODES_IN_PATH], int pathIndex);
 void addUniqueNode(char name[255]);
 void addEdge(char node[255], char edge[255]);
 
@@ -50,10 +51,9 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	// Load the data
 	while (fscanf(filePointer, "%s", buffer) == 1)
@@ -340,10 +340,9 @@ void printAllPaths()
 
 void problem2()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	// Load the data
 	while (fscanf(filePointer, "%s", buffer) == 1)
@@ -491,21 +490,13 @@ void problem2()
 	fclose(filePointer);
 }
 
-checkIfPathBeenToSmallNodeTwice(int currentPaths[MAX_N_PATHS][MAX_N_NODES_IN_PATH], int pathIndex)
+bool checkIfPathBeenToSmallNodeTwice(int currentPaths[MAX_N_PATHS][MAX_N_NODES_IN_PATH], int pathIndex)
 {
 	bool firstSmallNodeVisitedTwice = false;
 
 	int nTimesVisited[MAX_N_NODES_IN_PATH] = { 0 };
 	int i = 0;
 
-	int test[MAX_N_NODES_IN_PATH] = { 0 };
-	while (currentPaths[pathIndex][i] != 0)
-	{
-		test[i] = currentPaths[pathIndex][i];
-		i++;
-	}
-
-	i = 0;
 	while (currentPaths[pathIndex][i] != 0)
 	{
 		int j = 0;

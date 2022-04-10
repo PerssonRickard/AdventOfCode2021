@@ -13,14 +13,13 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char stringInput[255];
 	int intInput;
 
 	int horizontalPos = 0;
 	int depth = 0;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	while (fscanf(filePointer, "%s %d", stringInput, &intInput)==2)
 	{
@@ -50,7 +49,6 @@ void problem1()
 
 void problem2()
 {
-	FILE *filePointer;
 	char stringInput[255];
 	int intInput;
 
@@ -58,7 +56,7 @@ void problem2()
 	int depth = 0;
 	int aim = 0;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	while (fscanf(filePointer, "%s %d", stringInput, &intInput) == 2)
 	{

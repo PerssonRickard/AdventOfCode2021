@@ -12,21 +12,20 @@ int main()
 
 void problem1()
 {
-	FILE *fp;
 	char buff[255];
 
-	fopen_s(&fp, "input.txt", "r");
+	FILE *fp = fopen("input.txt", "r");
 
 
 	int currentDepth;
-	int prevDepth = NULL;
+	int prevDepth = -1;
 	int increasingMeasCount = 0;
 
 	while (fgets(buff, 255, (FILE*)fp))
 	{
-		sscanf_s(buff, "%d", &currentDepth);
+		sscanf(buff, "%d", &currentDepth);
 
-		if (prevDepth)
+		if (prevDepth != -1)
 		{
 			if (currentDepth > prevDepth)
 			{
@@ -44,23 +43,22 @@ void problem1()
 
 void problem2()
 {
-	FILE *fp;
 	char buff[255];
 	int slidingWindow[3];
 	int windowSize = 0;
 	int i = 0;
 
-	fopen_s(&fp, "input.txt", "r");
+	FILE *fp = fopen("input.txt", "r");
 
 
 	int currentDepth;
-	int currentSum = NULL;
-	int prevSum = NULL;
+	int currentSum = -1;
+	int prevSum = -1;
 	int increasingMeasCount = 0;
 
 	while (fgets(buff, 255, (FILE*)fp))
 	{
-		sscanf_s(buff, "%d", &currentDepth);
+		sscanf(buff, "%d", &currentDepth);
 
 		slidingWindow[i] = currentDepth;
 		i = (i + 1) % 3;
@@ -75,7 +73,7 @@ void problem2()
 			currentSum = slidingWindow[0] + slidingWindow[1] + slidingWindow[2];
 		}
 
-		if (prevSum)
+		if (prevSum != -1)
 		{
 			if (currentSum > prevSum)
 			{
@@ -83,7 +81,7 @@ void problem2()
 			}
 		}
 
-		if (currentSum)
+		if (currentSum != -1)
 		{
 			prevSum = currentSum;
 		}

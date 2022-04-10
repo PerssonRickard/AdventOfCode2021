@@ -117,8 +117,8 @@ def explode(explodingPair, firstNumberToLeftPair):
         explodingPair.parent.right.number = 0
 
 def split(number):
-    number.left = node(number, number=math.floor(number.number / 2), isRightOrLeftChild=0)
-    number.right = node(number, number=math.ceil(number.number / 2), isRightOrLeftChild=1)
+    number.left = node(number, number=math.floor(number.number / 2.0), isRightOrLeftChild=0)
+    number.right = node(number, number=math.ceil(number.number / 2.0), isRightOrLeftChild=1)
     number.number = None
 
 def reduceNumber(number):

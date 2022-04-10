@@ -36,12 +36,11 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char buffer[255];
 	char pair[3];
 	char insertion[2];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	// Read template
 	fscanf(filePointer, "%s", buffer);
@@ -172,13 +171,12 @@ void addUniqueElement(char element)
 
 void problem2()
 {
-	FILE *filePointer;
 	char buffer[255];
 	char pair[3];
 	char insertion[2];
 	char lastElement = 0;
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	// Read template
 	fscanf(filePointer, "%s", buffer);

@@ -33,10 +33,9 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	int digitCount = 0;
 	while (fgets(buffer, 255, filePointer))
@@ -51,8 +50,6 @@ void problem1()
 		for (int j = 0; j < 4; j++)
 		{
 			i++;
-
-			char currentChar = buffer[i];
 
 			int segmentCount = 0;
 			while (buffer[i] != ' ' && buffer[i] != '\n')
@@ -76,12 +73,10 @@ void problem1()
 void problem2()
 {
 
-	signalPatternS input[200][14] = {-1};
-
-	FILE *filePointer;
+	signalPatternS input[200][14] = {};
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	// Store input
 	int i = 0, j = 0, k = 0, w = 0;
@@ -135,7 +130,7 @@ void problem2()
 	for (i = 0; i < 200; i++)
 	{
 		short digitToPatternIndex[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-		signalPatternS currentSignalPatterns[14] = {-1};
+		signalPatternS currentSignalPatterns[14];
 		for (j = 0; j < 14; j++)
 		{
 			currentSignalPatterns[j] = input[i][j];
@@ -176,7 +171,6 @@ void problem2()
 			int sameCount = 0;
 			currentChar = -1;
 			char extraWire = -1;
-			signalPatternS testPattern = currentSignalPatterns[j]; // for debugging
 			while (currentChar != '\0')
 			{
 				currentChar = currentSignalPatterns[j].pattern[k];
@@ -237,7 +231,6 @@ void problem2()
 			int sameCount = 0;
 			currentChar = -1;
 			char extraWire = -1;
-			signalPatternS testPattern = currentSignalPatterns[j]; // for debugging
 			while (currentChar != '\0')
 			{
 				currentChar = currentSignalPatterns[j].pattern[k];
@@ -297,7 +290,6 @@ void problem2()
 			int sameCount = 0;
 			currentChar = -1;
 			char extraWire = -1;
-			signalPatternS testPattern = currentSignalPatterns[j]; // for debugging
 			while (currentChar != '\0')
 			{
 				currentChar = currentSignalPatterns[j].pattern[k];

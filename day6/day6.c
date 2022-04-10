@@ -16,10 +16,9 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char buffer[1000];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	if (fscanf(filePointer, "%s", buffer) == 1)
 	{
@@ -76,10 +75,9 @@ void problem1()
 
 void problem2()
 {
-	FILE *filePointer;
 	char buffer[1000];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	if (fscanf(filePointer, "%s", buffer) == 1)
 	{

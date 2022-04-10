@@ -11,8 +11,14 @@ void problem2();
 
 void printBoard(int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoardWidth], int i);
 void printBoards(int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoardWidth]);
-int updateAndCheckForWinningBoard(int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoardWidth], int numberDrawn);
-int updateAndCheckForAllWinningBoards(int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoardWidth], int numberDrawn, int boardIndicesAlreadyWon[nBoards], int* nBoardsAlreadyWon);
+int updateAndCheckForWinningBoard(
+	int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoardWidth],
+	int numberDrawn);
+int updateAndCheckForAllWinningBoards(
+	int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoardWidth],
+	int numberDrawn,
+	int boardIndicesAlreadyWon[nBoards],
+	int* nBoardsAlreadyWon);
 
 int main()
 {
@@ -22,13 +28,12 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char drawnNumbers[511];
 	int number;
 
 	int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoardWidth] = {0};
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	if (fscanf(filePointer, "%s", drawnNumbers) == 1)
 	{
@@ -207,13 +212,12 @@ void printBoards(int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoar
 
 void problem2()
 {
-	FILE *filePointer;
 	char drawnNumbers[511];
 	int number;
 
 	int bingoBoardsAndMasks[nBoards][2][bingoBoardHeight][bingoBoardWidth] = { 0 };
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	if (fscanf(filePointer, "%s", drawnNumbers) == 1)
 	{

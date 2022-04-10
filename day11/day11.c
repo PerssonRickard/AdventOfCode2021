@@ -23,10 +23,9 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	int y = 0;
 	while (fscanf(filePointer, "%s", buffer) == 1)
@@ -148,10 +147,9 @@ void printEnergyLevels()
 
 void problem2()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	int y = 0;
 	while (fscanf(filePointer, "%s", buffer) == 1)

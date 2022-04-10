@@ -7,8 +7,8 @@ void problem1();
 void problem2();
 
 #define MAX_N_NODES 300000
-#define MAP_WIDTH 500
-#define MAP_HEIGHT 500
+#define MAP_WIDTH 100
+#define MAP_HEIGHT 100
 
 typedef struct nodeS nodeS;
 
@@ -33,12 +33,12 @@ struct linkedListNodeS
 void printQueue();
 void visitEdges(nodeS* currentNode, int edgeIds[4][2], int nEdges);
 void visitEdges2(nodeS* currentNode, int edgeIds[4][2], int nEdges);
-void getAllEdgeIds(nodeS* currentNode, int edgeIds[4][2], int* nEdges);
+void getAllEdgeIds(nodeS* currentNode, int edgeIds[4][2], int* nEdges, int map_width, int map_height);
 nodeS* getSeenNode(int x, int y);
 int findShortestNode(nodeS** shortestNode);
 void addSeenNode(nodeS* node);
 
-nodeS* seenNodes[MAP_WIDTH][MAP_HEIGHT];
+nodeS* seenNodes[5*MAP_WIDTH][5*MAP_HEIGHT];
 linkedListNodeS* queue = NULL;
 int map[MAP_WIDTH][MAP_HEIGHT];
 int map2[5*MAP_WIDTH][5*MAP_HEIGHT];
@@ -51,10 +51,9 @@ int main()
 
 void problem1()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	int x = 0;
 	int y = 0;
@@ -102,7 +101,7 @@ void problem1()
 
 		int edgeIds[4][2];
 		int nEdges;
-		getAllEdgeIds(currentNode, edgeIds, &nEdges);
+		getAllEdgeIds(currentNode, edgeIds, &nEdges, MAP_WIDTH, MAP_HEIGHT);
 		visitEdges(currentNode, edgeIds, nEdges);
 	}
 
@@ -244,7 +243,7 @@ void visitEdges2(nodeS* currentNode, int edgeIds[4][2], int nEdges)
 	}
 }
 
-void getAllEdgeIds(nodeS* currentNode, int edgeIds[4][2], int* nEdges)
+void getAllEdgeIds(nodeS* currentNode, int edgeIds[4][2], int* nEdges, int map_width, int map_height)
 {
 	int x = 0;
 	int y = 0;
@@ -260,7 +259,7 @@ void getAllEdgeIds(nodeS* currentNode, int edgeIds[4][2], int* nEdges)
 		(*nEdges)++;
 	}
 	// Right
-	if (currentNode->xPos < MAP_WIDTH - 1)
+	if (currentNode->xPos < map_width - 1)
 	{
 		x = currentNode->xPos + 1;
 		y = currentNode->yPos;
@@ -278,7 +277,7 @@ void getAllEdgeIds(nodeS* currentNode, int edgeIds[4][2], int* nEdges)
 		(*nEdges)++;
 	}
 	// Down
-	if (currentNode->yPos < MAP_HEIGHT - 1)
+	if (currentNode->yPos < map_height - 1)
 	{
 		x = currentNode->xPos;
 		y = currentNode->yPos + 1;
@@ -362,10 +361,9 @@ void addSeenNode(nodeS* node)
 
 void problem2()
 {
-	FILE *filePointer;
 	char buffer[255];
 
-	fopen_s(&filePointer, "input.txt", "r");
+	FILE *filePointer = fopen("input.txt", "r");
 
 	int x = 0;
 	int y = 0;
@@ -386,7 +384,7 @@ void problem2()
 						risk = risk % 9;
 					}
 
-					map2[x + x2*100][y + y2*100] = risk; // 100 is the previous map width and height, can be handled better
+					map2[x + x2*MAP_WIDTH][y + y2*MAP_HEIGHT] = risk;
 				}
 			}
 			x++;
@@ -406,8 +404,8 @@ void problem2()
 	// Add end-node so that it can be used as while-loop-condition
 	nodeS* endNode = malloc(sizeof(nodeS));
 	endNode->distance = 1000001;
-	endNode->xPos = 100*5 - 1; // 100 is the previous map width and height, can be handled better
-	endNode->yPos = 100*5 - 1; // 100 is the previous map width and height, can be handled better
+	endNode->xPos = MAP_WIDTH*5 - 1;
+	endNode->yPos = MAP_HEIGHT*5 - 1;
 	endNode->hasBeenVisited = false;
 	endNode->prevNode = NULL;
 
@@ -423,7 +421,7 @@ void problem2()
 
 		int edgeIds[4][2];
 		int nEdges;
-		getAllEdgeIds(currentNode, edgeIds, &nEdges);
+		getAllEdgeIds(currentNode, edgeIds, &nEdges, 5*MAP_WIDTH, 5*MAP_HEIGHT);
 		visitEdges2(currentNode, edgeIds, nEdges);
 	}
 
